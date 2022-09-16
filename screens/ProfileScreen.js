@@ -33,7 +33,7 @@ export default function ProfileScreen() {
     <View style={styles.container}>
       <Text style={styles.title}>profile</Text>
       <Text style={{ fontSize: 20, fontWeight: "700", marginBottom: 10 }}>
-        your user name: {username}
+        Hi! Your user name: {username}
       </Text>
       <View style={{ flex: 1 }} />
       <TouchableOpacity
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     color: "black",
   },
   button: {
-    backgroundColor: "black",
+    backgroundColor: "green",
     borderRadius: 15,
     width: "100%",
   },
