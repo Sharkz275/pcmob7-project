@@ -62,6 +62,14 @@ export default function NotesScreenAdd() {
         selectionColor={"gray"}
         multiline={true}
       />
+      <TextInput
+        style={styles.noteBody}
+        placeholder={"Add your reflection details"}
+        value={noteBody}
+        onChangeText={(text) => setNoteBody(text)}
+        selectionColor={"gray"}
+        multiline={true}
+      />
       <View style={{ flex: 1 }} />
       <TouchableOpacity
         style={styles.button}
