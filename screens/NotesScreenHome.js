@@ -6,7 +6,10 @@ import {
     View,
   } from "react-native";
   import React from "react";
-  
+  import { useSelector } from "react-redux";
+  import { useNavigation } from "@react-navigation/native";
+  import { NOTES_SCREEN } from "../constants";
+
   const posts = [
     {
       id: 1,
@@ -16,6 +19,8 @@ import {
   ];
   
   export default function NotesScreenHome() {
+    const posts = useSelector((state) => state.notes);
+    const navigation = useNavigation ();
     function renderItem({ item }) {
       return (
         <TouchableOpacity style={styles.noteCard} onPress={() => {}}>
@@ -37,7 +42,9 @@ import {
         />
   
         <View style={{ flex: 1 }} />
-        <TouchableOpacity style={styles.button} onPress={() => {}}>
+        <TouchableOpacity 
+          style={styles.button} 
+          onPress={() => navigation.navigate(NOTES_SCREEN.Add)}>
           <Text style={styles.buttonText}>Add Training Session</Text>
         </TouchableOpacity>
       </View>
@@ -80,7 +87,7 @@ import {
     buttonText: {
       textAlign: "center",
       fontWeight: "400",
-      fontSize: 24,
+      fontSize: 16,
       padding: 20,
       color: "white",
     },
