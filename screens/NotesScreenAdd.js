@@ -10,14 +10,37 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { nanoid } from "@reduxjs/toolkit";
+import { useDispatch } from "react-redux";
+import { addNewPost } from "../features/notesSlice";
 
 export default function NotesScreenAdd() {
   const navigation = useNavigation();
   const [noteTitle, setNoteTitle] = useState("");
   const [noteBody, setNoteBody] = useState("");
+  const dispatch = useDispatch();
+
+  const canSave = [noteTitle, noteBody].every(Boolean);
+
+  async function savePost() {
+    if (canSave) {
+      try {
+        const post = {
+          id: nanoid(),
+          title: noteTitle,
+          content: noteBody,
+        };
+        await dispatch(addNewPost(post));
+      } catch (error) {
+        console.error("Failed to save the post: ", error);
+      } finally {
+        navigation.goBack();
+      }
+    }
+  }
 
   return (
-     <KeyboardAvoidingView
+    <KeyboardAvoidingView
       style={styles.container}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
@@ -26,22 +49,25 @@ export default function NotesScreenAdd() {
       </TouchableOpacity>
       <TextInput
         style={styles.noteTitle}
-        placeholder={"note title"}
+        placeholder={"Training"}
         value={noteTitle}
         onChangeText={(text) => setNoteTitle(text)}
         selectionColor={"gray"}
       />
       <TextInput
         style={styles.noteBody}
-        placeholder={"Add your notes"}
+        placeholder={"Add your training session details"}
         value={noteBody}
         onChangeText={(text) => setNoteBody(text)}
         selectionColor={"gray"}
         multiline={true}
       />
       <View style={{ flex: 1 }} />
-      <TouchableOpacity style={styles.button} onPress={() => {}}>
-        <Text style={styles.buttonText}>Add Note</Text>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={async () => await savePost()}
+      >
+        <Text style={styles.buttonText}>Add Note1</Text>
       </TouchableOpacity>
     </KeyboardAvoidingView>
   );
