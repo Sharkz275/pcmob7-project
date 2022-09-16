@@ -11,7 +11,7 @@ import {
   import { useNavigation } from "@react-navigation/native";
   import axios from "axios";
   import AsyncStorage from "@react-native-async-storage/async-storage";
-  import { PROFILE_SCREEN, API, API_LOGIN, API_SIGNUP } from "../constants";
+  import { HOME_STACK, API, API_LOGIN, API_SIGNUP } from "../constants";
   
   export default function AuthScreen() {
     const navigation = useNavigation();
@@ -58,7 +58,7 @@ import {
           password,
         });
         await AsyncStorage.setItem("token", response.data.access_token);
-        navigation.navigate(PROFILE_SCREEN);
+        navigation.navigate(HOME_STACK);
       } catch (error) {
         console.log(error.response);
         setErrorText(error.response.data.description);
