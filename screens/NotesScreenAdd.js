@@ -18,8 +18,9 @@ export default function NotesScreenAdd() {
   const navigation = useNavigation();
   const [noteTitle, setNoteTitle] = useState("");
   const [noteBody, setNoteBody] = useState("");
+  const [noteBody1, setNoteBody1] = useState("");
+  const [noteBody2, setNoteBody2] = useState("");
   const dispatch = useDispatch();
-
   const canSave = [noteTitle, noteBody].every(Boolean);
 
   async function savePost() {
@@ -29,6 +30,8 @@ export default function NotesScreenAdd() {
           id: nanoid(),
           title: noteTitle,
           content: noteBody,
+          reflection: noteBody1,
+          feel: noteBody2,
         };
         await dispatch(addNewPost(post));
       } catch (error) {
@@ -47,29 +50,49 @@ export default function NotesScreenAdd() {
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <FontAwesome name={"arrow-left"} size={24} color={"black"} />
       </TouchableOpacity>
+
       <TextInput
         style={styles.noteTitle}
-        placeholder={"Training"}
+        placeholder={"Training Date"}
         value={noteTitle}
         onChangeText={(text) => setNoteTitle(text)}
         selectionColor={"gray"}
       />
+
+      <Text>Training Session Details</Text>
       <TextInput
         style={styles.noteBody}
-        placeholder={"Add your training session details"}
+        placeholder={"Add your training session details, including load."}
         value={noteBody}
         onChangeText={(text) => setNoteBody(text)}
         selectionColor={"gray"}
         multiline={true}
       />
+
+      <Text>My Reflection: </Text>
       <TextInput
-        style={styles.noteBody}
-        placeholder={"Add your reflection details"}
-        value={noteBody}
-        onChangeText={(text) => setNoteBody(text)}
+        style={styles.noteBody1}
+        placeholder={"Add your reflection for this training session"}
+        value={noteBody1}
+        onChangeText={(text) => setNoteBody1(text)}
         selectionColor={"gray"}
         multiline={true}
       />
+
+    <Text>How I feel: </Text>
+    <TextInput
+        style={styles.noteBody2}
+        placeholder={"Add your feelings for this training session"}
+        value={noteBody2}
+        onChangeText={(text) => setNoteBody2(text)}
+        selectionColor={"gray"}
+        multiline={true}
+      />
+
+      <Text>Feelings in emoji</Text>
+    
+   
+
       <View style={{ flex: 1 }} />
       <TouchableOpacity
         style={styles.button}
@@ -95,11 +118,19 @@ const styles = StyleSheet.create({
     marginBottom: 25,
   },
   noteBody: {
-    fontSize: 15,
+    fontSize: 14,
+    fontWeight: "400",
+  },
+  noteBody1: {
+    fontSize: 14,
+    fontWeight: "400",
+  },
+  noteBody2: {
+    fontSize: 14,
     fontWeight: "400",
   },
   button: {
-    backgroundColor: "black",
+    backgroundColor: "green",
     borderRadius: 15,
     width: "100%",
     marginBottom: 20,
