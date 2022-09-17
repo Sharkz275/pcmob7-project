@@ -31,7 +31,7 @@ export default function ProfileScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>profile</Text>
+      <Text style={styles.title}>Your Profile</Text>
       <Text style={{ fontSize: 20, fontWeight: "700", marginBottom: 10 }}>
         Hi! Your user name: {username}
       </Text>
@@ -53,7 +53,7 @@ export default function ProfileScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#83c5be",
     paddingTop: 100,
     padding: 25,
   },
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     color: "black",
   },
   button: {
-    backgroundColor: "green",
+    backgroundColor: "#006d77",
     borderRadius: 15,
     width: "100%",
   },

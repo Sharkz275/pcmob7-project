@@ -120,6 +120,9 @@ const styles = StyleSheet.create({
   noteBody: {
     fontSize: 14,
     fontWeight: "400",
+    borderWidth: 2, 
+    borderColor: "black", 
+    padding: 9, 
   },
   noteBody1: {
     fontSize: 14,
