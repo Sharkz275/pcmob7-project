@@ -21,7 +21,7 @@ export default function NotesScreenAdd() {
   const [noteBody1, setNoteBody1] = useState("");
   const [noteBody2, setNoteBody2] = useState("");
   const dispatch = useDispatch();
-  const canSave = [noteTitle, noteBody].every(Boolean);
+  const canSave = [noteTitle, noteBody, noteBody1, noteBody2].every(Boolean);
 
   async function savePost() {
     if (canSave) {
@@ -98,7 +98,7 @@ export default function NotesScreenAdd() {
         style={styles.button}
         onPress={async () => await savePost()}
       >
-        <Text style={styles.buttonText}>Add Note1</Text>
+        <Text style={styles.buttonText}>Add Training</Text>
       </TouchableOpacity>
     </KeyboardAvoidingView>
   );
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     fontWeight: "400",
   },
   button: {
-    backgroundColor: "green",
+    backgroundColor: "#006d77",
     borderRadius: 15,
     width: "100%",
     marginBottom: 20,

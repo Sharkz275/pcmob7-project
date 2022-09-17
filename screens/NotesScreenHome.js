@@ -35,6 +35,8 @@ export default function NotesScreenHome() {
         <Text style={styles.noteCardBodyText}>
           {item?.content?.substring(0, 120)}
         </Text>
+        <Text>{item.reflection}</Text>
+        <Text>{item.feel}</Text>
       </TouchableOpacity>
     );
   }
