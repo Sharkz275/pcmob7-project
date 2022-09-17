@@ -20,6 +20,10 @@ export default function NotesScreenAdd() {
   const [noteBody, setNoteBody] = useState("");
   const [noteBody1, setNoteBody1] = useState("");
   const [noteBody2, setNoteBody2] = useState("");
+  const [age, setAge] = useState();
+  const handleChange = (e) => {
+    sessionStorage(e.target.value);
+  }
   const dispatch = useDispatch();
   const canSave = [noteTitle, noteBody, noteBody1, noteBody2].every(Boolean);
 
@@ -89,7 +93,15 @@ export default function NotesScreenAdd() {
         multiline={true}
       />
 
-      <Text>Feelings in emoji</Text>
+    <Text>Feelings in Emoji: </Text>
+    <TextInput 
+      type="radio"
+      name="age"
+      id="age-rage-1"
+      value="0-17"
+      onChange={handleChange}
+      checked={age ==="0-17"}
+    />
     
    
 

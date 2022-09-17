@@ -48,6 +48,8 @@ export const deletePostThunk = createAsyncThunk(
   }
 );
 
+
+
 const notesSlice = createSlice({
   name: "training",
   initialState,
@@ -70,11 +72,12 @@ const notesSlice = createSlice({
         state.posts.push(action.payload);
       })
       .addCase(updatePostThunk.fulfilled, (state, action) => {
-        const { id, title, content } = action.payload;
+        const { id, title, content, reflection } = action.payload;
         const existingPost = state.posts.find((post) => post.id === id);
         if (existingPost) {
           existingPost.title = title;
           existingPost.content = content;
+          existingPost.reflection = reflection;
         }
       })
       .addCase(deletePostThunk.fulfilled, (state, action) => {

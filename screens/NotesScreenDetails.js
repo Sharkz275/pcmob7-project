@@ -20,8 +20,8 @@ export default function NotesScreenDetails() {
   const params = route.params;
   const [noteTitle, setNoteTitle] = useState(params.title);
   const [noteBody, setNoteBody] = useState(params.content);
-  const [noteBody1, setNoteBody1] = useState("");
-  const [noteBody2, setNoteBody2] = useState("");
+  const [noteBody1, setNoteBody1] = useState(params.reflection);
+  const [noteBody2, setNoteBody2] = useState(params.feel);
   const [editable, setEditable] = useState(false);
   const dispatch = useDispatch();
   const id = params.id;
@@ -112,6 +112,15 @@ export default function NotesScreenDetails() {
         placeholder={"Add your notes1"}
         value={noteBody1}
         onChangeText={(text) => setNoteBody1(text)}
+        selectionColor={"gray"}
+        editable={editable}
+        multiline={true}
+      />
+      <TextInput
+        style={styles.noteBody2}
+        placeholder={"Add your notes2"}
+        value={noteBody2}
+        onChangeText={(text) => setNoteBody2(text)}
         selectionColor={"gray"}
         editable={editable}
         multiline={true}
